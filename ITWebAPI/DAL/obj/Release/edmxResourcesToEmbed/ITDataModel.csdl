@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ITDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ITDbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tPlanning" EntityType="ITDbModel.tPlanning" />
+    <EntitySet Name="tProject" EntityType="ITDbModel.tProject" />
+    <EntitySet Name="tProjectState" EntityType="ITDbModel.tProjectState" />
+    <EntitySet Name="tSprint" EntityType="ITDbModel.tSprint" />
+    <EntitySet Name="tTask" EntityType="ITDbModel.tTask" />
+    <EntitySet Name="tTeam" EntityType="ITDbModel.tTeam" />
+    <EntitySet Name="tTracker" EntityType="ITDbModel.tTracker" />
+    <EntitySet Name="tTrackRecord" EntityType="ITDbModel.tTrackRecord" />
+    <EntitySet Name="tUser" EntityType="ITDbModel.tUser" />
+    <EntitySet Name="tUserType" EntityType="ITDbModel.tUserType" />
+    <AssociationSet Name="FK__tPlanning__idPro__681373AD" Association="ITDbModel.FK__tPlanning__idPro__681373AD">
+      <End Role="tProject" EntitySet="tProject" />
+      <End Role="tPlanning" EntitySet="tPlanning" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tPlanning__idSpr__690797E6" Association="ITDbModel.FK__tPlanning__idSpr__690797E6">
+      <End Role="tSprint" EntitySet="tSprint" />
+      <End Role="tPlanning" EntitySet="tPlanning" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tProject__idStat__4C6B5938" Association="ITDbModel.FK__tProject__idStat__4C6B5938">
+      <End Role="tProjectState" EntitySet="tProjectState" />
+      <End Role="tProject" EntitySet="tProject" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tTask__idUser__5CA1C101" Association="ITDbModel.FK__tTask__idUser__5CA1C101">
+      <End Role="tUser" EntitySet="tUser" />
+      <End Role="tTask" EntitySet="tTask" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tTeam__idUser__55F4C372" Association="ITDbModel.FK__tTeam__idUser__55F4C372">
+      <End Role="tUser" EntitySet="tUser" />
+      <End Role="tTeam" EntitySet="tTeam" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tTracker__idUser__625A9A57" Association="ITDbModel.FK__tTracker__idUser__625A9A57">
+      <End Role="tUser" EntitySet="tUser" />
+      <End Role="tTracker" EntitySet="tTracker" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tTrackRec__idTra__65370702" Association="ITDbModel.FK__tTrackRec__idTra__65370702">
+      <End Role="tTracker" EntitySet="tTracker" />
+      <End Role="tTrackRecord" EntitySet="tTrackRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tUser__idType__531856C7" Association="ITDbModel.FK__tUser__idType__531856C7">
+      <End Role="tUserType" EntitySet="tUserType" />
+      <End Role="tUser" EntitySet="tUser" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="tPlanning">
+    <Key>
+      <PropertyRef Name="idProject" />
+      <PropertyRef Name="idSprint" />
+      <PropertyRef Name="slot" />
+    </Key>
+    <Property Name="idProject" Type="Int32" Nullable="false" />
+    <Property Name="idSprint" Type="Int32" Nullable="false" />
+    <Property Name="slot" Type="Int32" Nullable="false" />
+    <Property Name="planStart" Type="DateTime" Precision="3" />
+    <Property Name="planEnd" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tProject" Relationship="ITDbModel.FK__tPlanning__idPro__681373AD" FromRole="tPlanning" ToRole="tProject" />
+    <NavigationProperty Name="tSprint" Relationship="ITDbModel.FK__tPlanning__idSpr__690797E6" FromRole="tPlanning" ToRole="tSprint" />
+  </EntityType>
+  <EntityType Name="tProject">
+    <Key>
+      <PropertyRef Name="idProject" />
+    </Key>
+    <Property Name="idProject" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idState" Type="Int32" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tPlanning" Relationship="ITDbModel.FK__tPlanning__idPro__681373AD" FromRole="tProject" ToRole="tPlanning" />
+    <NavigationProperty Name="tProjectState" Relationship="ITDbModel.FK__tProject__idStat__4C6B5938" FromRole="tProject" ToRole="tProjectState" />
+  </EntityType>
+  <EntityType Name="tProjectState">
+    <Key>
+      <PropertyRef Name="idState" />
+    </Key>
+    <Property Name="idState" Type="Int32" Nullable="false" />
+    <Property Name="designation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tProject" Relationship="ITDbModel.FK__tProject__idStat__4C6B5938" FromRole="tProjectState" ToRole="tProject" />
+  </EntityType>
+  <EntityType Name="tSprint">
+    <Key>
+      <PropertyRef Name="idSprint" />
+    </Key>
+    <Property Name="idSprint" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="tPlanning" Relationship="ITDbModel.FK__tPlanning__idSpr__690797E6" FromRole="tSprint" ToRole="tPlanning" />
+  </EntityType>
+  <EntityType Name="tTask">
+    <Key>
+      <PropertyRef Name="idTask" />
+    </Key>
+    <Property Name="idTask" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idUser" Type="Int32" />
+    <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tUser" Relationship="ITDbModel.FK__tTask__idUser__5CA1C101" FromRole="tTask" ToRole="tUser" />
+  </EntityType>
+  <EntityType Name="tTeam">
+    <Key>
+      <PropertyRef Name="idTeam" />
+    </Key>
+    <Property Name="idTeam" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idUser" Type="Int32" />
+    <NavigationProperty Name="tUser" Relationship="ITDbModel.FK__tTeam__idUser__55F4C372" FromRole="tTeam" ToRole="tUser" />
+  </EntityType>
+  <EntityType Name="tTracker">
+    <Key>
+      <PropertyRef Name="idTracker" />
+    </Key>
+    <Property Name="idTracker" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idUser" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tUser" Relationship="ITDbModel.FK__tTracker__idUser__625A9A57" FromRole="tTracker" ToRole="tUser" />
+    <NavigationProperty Name="tTrackRecord" Relationship="ITDbModel.FK__tTrackRec__idTra__65370702" FromRole="tTracker" ToRole="tTrackRecord" />
+  </EntityType>
+  <EntityType Name="tTrackRecord">
+    <Key>
+      <PropertyRef Name="idTrackRecord" />
+    </Key>
+    <Property Name="idTrackRecord" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idTracker" Type="Int32" Nullable="false" />
+    <Property Name="activityStart" Type="DateTime" Precision="0" />
+    <Property Name="activityEnd" Type="DateTime" Precision="0" />
+    <Property Name="activityTotal" Type="Int32" />
+    <NavigationProperty Name="tTracker" Relationship="ITDbModel.FK__tTrackRec__idTra__65370702" FromRole="tTrackRecord" ToRole="tTracker" />
+  </EntityType>
+  <EntityType Name="tUser">
+    <Key>
+      <PropertyRef Name="idUser" />
+    </Key>
+    <Property Name="idUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="idType" Type="Int32" />
+    <NavigationProperty Name="tTask" Relationship="ITDbModel.FK__tTask__idUser__5CA1C101" FromRole="tUser" ToRole="tTask" />
+    <NavigationProperty Name="tTeam" Relationship="ITDbModel.FK__tTeam__idUser__55F4C372" FromRole="tUser" ToRole="tTeam" />
+    <NavigationProperty Name="tTracker" Relationship="ITDbModel.FK__tTracker__idUser__625A9A57" FromRole="tUser" ToRole="tTracker" />
+    <NavigationProperty Name="tUserType" Relationship="ITDbModel.FK__tUser__idType__531856C7" FromRole="tUser" ToRole="tUserType" />
+  </EntityType>
+  <EntityType Name="tUserType">
+    <Key>
+      <PropertyRef Name="idUserType" />
+    </Key>
+    <Property Name="idUserType" Type="Int32" Nullable="false" />
+    <Property Name="description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tUser" Relationship="ITDbModel.FK__tUser__idType__531856C7" FromRole="tUserType" ToRole="tUser" />
+  </EntityType>
+  <Association Name="FK__tPlanning__idPro__681373AD">
+    <End Type="ITDbModel.tProject" Role="tProject" Multiplicity="1" />
+    <End Type="ITDbModel.tPlanning" Role="tPlanning" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tProject">
+        <PropertyRef Name="idProject" />
+      </Principal>
+      <Dependent Role="tPlanning">
+        <PropertyRef Name="idProject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tPlanning__idSpr__690797E6">
+    <End Type="ITDbModel.tSprint" Role="tSprint" Multiplicity="1" />
+    <End Type="ITDbModel.tPlanning" Role="tPlanning" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tSprint">
+        <PropertyRef Name="idSprint" />
+      </Principal>
+      <Dependent Role="tPlanning">
+        <PropertyRef Name="idSprint" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tProject__idStat__4C6B5938">
+    <End Type="ITDbModel.tProjectState" Role="tProjectState" Multiplicity="0..1" />
+    <End Type="ITDbModel.tProject" Role="tProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tProjectState">
+        <PropertyRef Name="idState" />
+      </Principal>
+      <Dependent Role="tProject">
+        <PropertyRef Name="idState" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tTask__idUser__5CA1C101">
+    <End Type="ITDbModel.tUser" Role="tUser" Multiplicity="0..1" />
+    <End Type="ITDbModel.tTask" Role="tTask" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tUser">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="tTask">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tTeam__idUser__55F4C372">
+    <End Type="ITDbModel.tUser" Role="tUser" Multiplicity="0..1" />
+    <End Type="ITDbModel.tTeam" Role="tTeam" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tUser">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="tTeam">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tTracker__idUser__625A9A57">
+    <End Type="ITDbModel.tUser" Role="tUser" Multiplicity="1" />
+    <End Type="ITDbModel.tTracker" Role="tTracker" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tUser">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="tTracker">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tTrackRec__idTra__65370702">
+    <End Type="ITDbModel.tTracker" Role="tTracker" Multiplicity="1" />
+    <End Type="ITDbModel.tTrackRecord" Role="tTrackRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tTracker">
+        <PropertyRef Name="idTracker" />
+      </Principal>
+      <Dependent Role="tTrackRecord">
+        <PropertyRef Name="idTracker" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tUser__idType__531856C7">
+    <End Type="ITDbModel.tUserType" Role="tUserType" Multiplicity="0..1" />
+    <End Type="ITDbModel.tUser" Role="tUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tUserType">
+        <PropertyRef Name="idUserType" />
+      </Principal>
+      <Dependent Role="tUser">
+        <PropertyRef Name="idType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

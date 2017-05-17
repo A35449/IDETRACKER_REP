@@ -1,0 +1,32 @@
+  <div class="row">
+    <div class="col-md-3 center">
+      <a class="carousel-control-prev" href="#sprintsCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true">
+          <i ng-reflect-class-name="ion-chevron-left" class="ion-chevron-left"></i>
+        </span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </div>
+    <div class="col-md-6 center">
+      <div id="sprintsCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+        <div class="carousel-inner" role="listbox">
+          <div class="carousel-item" *ngFor="let sprint of sprintList; let index = index" [class.active]="index == 0">
+              <span>Sprint {{sprint.idSprint}}</span>
+          </div>
+        </div>
+      </div>
+    </div> 
+    <div class="col-md-3 center">
+      <a class="carousel-control-next" href="#sprintsCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true">
+            <i ng-reflect-class-name="ion-chevron-right" class="ion-chevron-right"></i>
+          </span>
+          <span class="sr-only">Next</span>
+        </a>
+    </div>  
+  </div>
+  <div class="row">
+          <sprintlist></sprintlist>
+  </div>
+
+

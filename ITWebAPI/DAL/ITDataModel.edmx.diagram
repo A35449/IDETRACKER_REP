@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f4db998dffa34bab908b617e84975f3a" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="ITDbModel.tPlanning" Width="1.5" PointX="12.25" PointY="1" />
+        <EntityTypeShape EntityType="ITDbModel.tProject" Width="1.5" PointX="10" PointY="1.125" />
+        <EntityTypeShape EntityType="ITDbModel.tProjectState" Width="1.5" PointX="7.75" PointY="1.375" />
+        <EntityTypeShape EntityType="ITDbModel.tSprint" Width="1.5" PointX="10" PointY="5.375" />
+        <EntityTypeShape EntityType="ITDbModel.tTask" Width="1.5" PointX="5.25" PointY="3.5" />
+        <EntityTypeShape EntityType="ITDbModel.tTeam" Width="1.5" PointX="5.25" PointY="1.125" />
+        <EntityTypeShape EntityType="ITDbModel.tTracker" Width="1.5" PointX="5.25" PointY="6.25" />
+        <EntityTypeShape EntityType="ITDbModel.tTrackRecord" Width="1.5" PointX="7.5" PointY="6" />
+        <EntityTypeShape EntityType="ITDbModel.tUser" Width="1.5" PointX="3" PointY="3.5" />
+        <EntityTypeShape EntityType="ITDbModel.tUserType" Width="1.5" PointX="0.75" PointY="3.875" />
+        <AssociationConnector Association="ITDbModel.FK__tPlanning__idPro__681373AD" />
+        <AssociationConnector Association="ITDbModel.FK__tPlanning__idSpr__690797E6" />
+        <AssociationConnector Association="ITDbModel.FK__tProject__idStat__4C6B5938" />
+        <AssociationConnector Association="ITDbModel.FK__tTask__idUser__5CA1C101" />
+        <AssociationConnector Association="ITDbModel.FK__tTeam__idUser__55F4C372" />
+        <AssociationConnector Association="ITDbModel.FK__tTracker__idUser__625A9A57" />
+        <AssociationConnector Association="ITDbModel.FK__tTrackRec__idTra__65370702" />
+        <AssociationConnector Association="ITDbModel.FK__tUser__idType__531856C7" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

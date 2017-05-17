@@ -1,0 +1,10 @@
+C:\Users\workstation\documents\visual studio 2017\Projects\ITWebAPI\DAL\bin\Release\DAL.dll.config
+C:\Users\workstation\documents\visual studio 2017\Projects\ITWebAPI\DAL\bin\Release\DAL.dll
+C:\Users\workstation\documents\visual studio 2017\Projects\ITWebAPI\DAL\bin\Release\DAL.pdb
+C:\Users\workstation\documents\visual studio 2017\Projects\ITWebAPI\DAL\bin\Release\EntityFramework.dll
+C:\Users\workstation\documents\visual studio 2017\Projects\ITWebAPI\DAL\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\workstation\documents\visual studio 2017\Projects\ITWebAPI\DAL\bin\Release\EntityFramework.xml
+C:\Users\workstation\documents\visual studio 2017\Projects\ITWebAPI\DAL\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\workstation\documents\visual studio 2017\Projects\ITWebAPI\DAL\obj\Release\DAL.csprojResolveAssemblyReference.cache
+C:\Users\workstation\documents\visual studio 2017\Projects\ITWebAPI\DAL\obj\Release\DAL.dll
+C:\Users\workstation\documents\visual studio 2017\Projects\ITWebAPI\DAL\obj\Release\DAL.pdb

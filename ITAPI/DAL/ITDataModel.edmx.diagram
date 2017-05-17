@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="12073fb3bff943e39fc03fa54596ceba" Name="Diagram1" ZoomLevel="71">
+        <EntityTypeShape EntityType="ITDbModel.tEvent" Width="1.5" PointX="1" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITDbModel.tPlanning" Width="1.5" PointX="5.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITDbModel.tProject" Width="1.5" PointX="3.375" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITDbModel.tProjectState" Width="1.5" PointX="0.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITDbModel.tSprint" Width="1.5" PointX="0.5" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITDbModel.tTask" Width="1.5" PointX="3.375" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITDbModel.tTaskState" Width="1.5" PointX="3.125" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITDbModel.tTeam" Width="1.5" PointX="7.5" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITDbModel.tTracker" Width="1.5" PointX="7.375" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITDbModel.tTrackRecord" Width="1.5" PointX="5.5" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITDbModel.tUser" Width="1.5" PointX="5.375" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITDbModel.tUserType" Width="1.5" PointX="0.5" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITDbModel.tTeamAllocation" Width="1.5" PointX="7.375" PointY="4" IsExpanded="true" />
+        <AssociationConnector Association="ITDbModel.FK__tPlanning__idPro__0ABD916C" ManuallyRouted="false" />
+        <AssociationConnector Association="ITDbModel.FK__tPlanning__idSpr__0BB1B5A5" ManuallyRouted="false" />
+        <AssociationConnector Association="ITDbModel.FK__tProject__idStat__6A50C1DA" ManuallyRouted="false" />
+        <AssociationConnector Association="ITDbModel.FK__tSprint__idProje__6D2D2E85" ManuallyRouted="false" />
+        <AssociationConnector Association="ITDbModel.FK__tTeamAllo__idPro__77AABCF8" ManuallyRouted="false" />
+        <AssociationConnector Association="ITDbModel.FK__tTask__idTaskSta__7D63964E" ManuallyRouted="false" />
+        <AssociationConnector Association="ITDbModel.FK__tTask__idUser__7C6F7215" ManuallyRouted="false" />
+        <AssociationConnector Association="ITDbModel.FK__tTrackRec__idTas__07E124C1" ManuallyRouted="false" />
+        <AssociationConnector Association="ITDbModel.FK__tTeamAllo__idTea__76B698BF" ManuallyRouted="false" />
+        <AssociationConnector Association="ITDbModel.FK__tTracker__idUser__041093DD" ManuallyRouted="false" />
+        <AssociationConnector Association="ITDbModel.FK__tTrackRec__idTra__06ED0088" ManuallyRouted="false" />
+        <AssociationConnector Association="ITDbModel.FK__tTeamAllo__idUse__75C27486" ManuallyRouted="false" />
+        <AssociationConnector Association="ITDbModel.FK__tUser__idType__71F1E3A2" ManuallyRouted="false" />
+        <AssociationConnector Association="ITDbModel.tSprintTask" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,11 @@
+.center{
+    text-align: center;
+}
+
+.al-main {
+	margin-left:0px !important;
+}
+
+.al-footer {
+	display: none !important;
+}

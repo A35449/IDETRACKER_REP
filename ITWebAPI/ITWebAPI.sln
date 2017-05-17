@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITWebAPI", "ITWebAPI\ITWebAPI.csproj", "{F694B5E4-5BCE-4AAE-9275-2EE56561977F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{63E824F4-DA23-49D2-B71E-0A607EE9C6D8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F694B5E4-5BCE-4AAE-9275-2EE56561977F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F694B5E4-5BCE-4AAE-9275-2EE56561977F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F694B5E4-5BCE-4AAE-9275-2EE56561977F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F694B5E4-5BCE-4AAE-9275-2EE56561977F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63E824F4-DA23-49D2-B71E-0A607EE9C6D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63E824F4-DA23-49D2-B71E-0A607EE9C6D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63E824F4-DA23-49D2-B71E-0A607EE9C6D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63E824F4-DA23-49D2-B71E-0A607EE9C6D8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
