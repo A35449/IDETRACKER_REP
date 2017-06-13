@@ -92,9 +92,6 @@
     <Compile Include="tTeamAllocation.cs">
       <DependentUpon>ITDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="tTracker.cs">
-      <DependentUpon>ITDataModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="tTrackRecord.cs">
       <DependentUpon>ITDataModel.tt</DependentUpon>
     </Compile>

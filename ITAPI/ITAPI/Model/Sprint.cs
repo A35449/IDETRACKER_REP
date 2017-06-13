@@ -12,6 +12,8 @@ namespace ITAPI.Model
         public int idSprint { get; set; }
         public int idProject { get; set; }
         public int slot { get; set; }
+        public int duration { get; set; }
+        public DateTime startDate { get; set; }
 
         public static Sprint Deserialize(tSprint p)
         {
@@ -19,6 +21,8 @@ namespace ITAPI.Model
             obj.idSprint = p.idSprint;
             obj.idProject = p.idProject;
             obj.slot = p.slot;
+            obj.duration = p.duration.HasValue ? p.duration.Value : 0;
+            obj.startDate = p.startDate;
             return obj;
         }
 

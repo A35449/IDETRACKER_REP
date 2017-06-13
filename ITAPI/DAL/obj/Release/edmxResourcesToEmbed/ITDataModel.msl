@@ -22,6 +22,7 @@
     <EntitySetMapping Name="tProject">
       <EntityTypeMapping TypeName="ITDbModel.tProject">
         <MappingFragment StoreEntitySet="tProject">
+          <ScalarProperty Name="slots" ColumnName="slots" />
           <ScalarProperty Name="idProject" ColumnName="idProject" />
           <ScalarProperty Name="idState" ColumnName="idState" />
           <ScalarProperty Name="name" ColumnName="name" />
@@ -96,6 +97,8 @@
     <EntitySetMapping Name="tUser">
       <EntityTypeMapping TypeName="ITDbModel.tUser">
         <MappingFragment StoreEntitySet="tUser">
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
           <ScalarProperty Name="idUser" ColumnName="idUser" />
           <ScalarProperty Name="username" ColumnName="username" />
           <ScalarProperty Name="idType" ColumnName="idType" />

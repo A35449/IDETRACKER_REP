@@ -24,6 +24,7 @@
     <Property Name="idProject" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="idState" Type="int" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="slots" Type="int" />
   </EntityType>
   <EntityType Name="tProjectState">
     <Key>
@@ -110,6 +111,8 @@ warning 6002: The table/view 'ITDb.dbo.tTeamAllocation' does not have a primary 
     <Property Name="idUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="username" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="idType" Type="int" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="tUserType">
     <Key>

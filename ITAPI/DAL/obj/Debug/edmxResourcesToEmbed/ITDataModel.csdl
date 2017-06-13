@@ -1,5 +1,100 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="ITDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tProjectState">
+    <Key>
+      <PropertyRef Name="idState" />
+    </Key>
+    <Property Name="idState" Type="Int32" Nullable="false" />
+    <Property Name="designation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tProject" Relationship="ITDbModel.FK__tProject__idStat__31D75E8D" FromRole="tProjectState" ToRole="tProject" />
+  </EntityType>
+  <EntityType Name="tSprint">
+    <Key>
+      <PropertyRef Name="idSprint" />
+    </Key>
+    <Property Name="idSprint" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idProject" Type="Int32" Nullable="false" />
+    <Property Name="slot" Type="Int32" Nullable="false" />
+    <Property Name="duration" Type="Int32" />
+    <NavigationProperty Name="tPlanning" Relationship="ITDbModel.FK__tPlanning__idSpr__542C7691" FromRole="tSprint" ToRole="tPlanning" />
+    <NavigationProperty Name="tProject" Relationship="ITDbModel.FK__tSprint__idProje__35A7EF71" FromRole="tSprint" ToRole="tProject" />
+    <NavigationProperty Name="tTask" Relationship="ITDbModel.FK__tTask__idSprint__47C69FAC" FromRole="tSprint" ToRole="tTask" />
+    <Property Name="startDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="tUserType">
+    <Key>
+      <PropertyRef Name="idUserType" />
+    </Key>
+    <Property Name="idUserType" Type="Int32" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tUser" Relationship="ITDbModel.FK__tUser__idType__3B60C8C7" FromRole="tUserType" ToRole="tUser" />
+  </EntityType>
+  <EntityContainer Name="ITDbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tProjectState" EntityType="Self.tProjectState" />
+    <EntitySet Name="tSprint" EntityType="Self.tSprint" />
+    <EntitySet Name="tUserType" EntityType="Self.tUserType" />
+    <EntitySet Name="tEvent" EntityType="ITDbModel.tEvent" />
+    <EntitySet Name="tPlanning" EntityType="ITDbModel.tPlanning" />
+    <EntitySet Name="tProject" EntityType="ITDbModel.tProject" />
+    <EntitySet Name="tTask" EntityType="ITDbModel.tTask" />
+    <EntitySet Name="tTaskState" EntityType="ITDbModel.tTaskState" />
+    <EntitySet Name="tTeam" EntityType="ITDbModel.tTeam" />
+    <EntitySet Name="tUser" EntityType="ITDbModel.tUser" />
+    <EntitySet Name="tTeamAllocation" EntityType="ITDbModel.tTeamAllocation" />
+    <AssociationSet Name="FK__tPlanning__idPro__53385258" Association="ITDbModel.FK__tPlanning__idPro__53385258">
+      <End Role="tProject" EntitySet="tProject" />
+      <End Role="tPlanning" EntitySet="tPlanning" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tPlanning__idSpr__542C7691" Association="ITDbModel.FK__tPlanning__idSpr__542C7691">
+      <End Role="tSprint" EntitySet="tSprint" />
+      <End Role="tPlanning" EntitySet="tPlanning" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tProject__idStat__31D75E8D" Association="ITDbModel.FK__tProject__idStat__31D75E8D">
+      <End Role="tProjectState" EntitySet="tProjectState" />
+      <End Role="tProject" EntitySet="tProject" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tSprint__idProje__35A7EF71" Association="ITDbModel.FK__tSprint__idProje__35A7EF71">
+      <End Role="tProject" EntitySet="tProject" />
+      <End Role="tSprint" EntitySet="tSprint" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tTeamAllo__idPro__4119A21D" Association="ITDbModel.FK__tTeamAllo__idPro__4119A21D">
+      <End Role="tProject" EntitySet="tProject" />
+      <End Role="tTeamAllocation" EntitySet="tTeamAllocation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tTask__idSprint__47C69FAC" Association="ITDbModel.FK__tTask__idSprint__47C69FAC">
+      <End Role="tSprint" EntitySet="tSprint" />
+      <End Role="tTask" EntitySet="tTask" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tTask__idTaskSta__46D27B73" Association="ITDbModel.FK__tTask__idTaskSta__46D27B73">
+      <End Role="tTaskState" EntitySet="tTaskState" />
+      <End Role="tTask" EntitySet="tTask" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tTask__idUser__45DE573A" Association="ITDbModel.FK__tTask__idUser__45DE573A">
+      <End Role="tUser" EntitySet="tUser" />
+      <End Role="tTask" EntitySet="tTask" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tTeamAllo__idTea__40257DE4" Association="ITDbModel.FK__tTeamAllo__idTea__40257DE4">
+      <End Role="tTeam" EntitySet="tTeam" />
+      <End Role="tTeamAllocation" EntitySet="tTeamAllocation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tTeamAllo__idUse__3F3159AB" Association="ITDbModel.FK__tTeamAllo__idUse__3F3159AB">
+      <End Role="tUser" EntitySet="tUser" />
+      <End Role="tTeamAllocation" EntitySet="tTeamAllocation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tUser__idType__3B60C8C7" Association="ITDbModel.FK__tUser__idType__3B60C8C7">
+      <End Role="tUserType" EntitySet="tUserType" />
+      <End Role="tUser" EntitySet="tUser" />
+    </AssociationSet>
+    <EntitySet Name="tTrackRecord" EntityType="ITDbModel.tTrackRecord" />
+    <AssociationSet Name="FK__tTrackRec__idTas__1F83A428" Association="ITDbModel.FK__tTrackRec__idTas__1F83A428">
+      <End Role="tTask" EntitySet="tTask" />
+      <End Role="tTrackRecord" EntitySet="tTrackRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tTrackRec__idUse__1E8F7FEF" Association="ITDbModel.FK__tTrackRec__idUse__1E8F7FEF">
+      <End Role="tUser" EntitySet="tUser" />
+      <End Role="tTrackRecord" EntitySet="tTrackRecord" />
+    </AssociationSet>
+  </EntityContainer>
   <EntityType Name="tEvent">
     <Key>
       <PropertyRef Name="idEvent" />
@@ -16,8 +111,8 @@
     <Property Name="idSprint" Type="Int32" Nullable="false" />
     <Property Name="sprintStart" Type="DateTime" Precision="3" />
     <Property Name="sprintEnd" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="tProject" Relationship="Self.FK__tPlanning__idPro__0ABD916C" FromRole="tPlanning" ToRole="tProject" />
-    <NavigationProperty Name="tSprint" Relationship="Self.FK__tPlanning__idSpr__0BB1B5A5" FromRole="tPlanning" ToRole="tSprint" />
+    <NavigationProperty Name="tProject" Relationship="ITDbModel.FK__tPlanning__idPro__53385258" FromRole="tPlanning" ToRole="tProject" />
+    <NavigationProperty Name="tSprint" Relationship="ITDbModel.FK__tPlanning__idSpr__542C7691" FromRole="tPlanning" ToRole="tSprint" />
   </EntityType>
   <EntityType Name="tProject">
     <Key>
@@ -25,30 +120,12 @@
     </Key>
     <Property Name="idProject" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="idState" Type="Int32" Nullable="false" />
-    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="tPlanning" Relationship="Self.FK__tPlanning__idPro__0ABD916C" FromRole="tProject" ToRole="tPlanning" />
-    <NavigationProperty Name="tProjectState" Relationship="Self.FK__tProject__idStat__6A50C1DA" FromRole="tProject" ToRole="tProjectState" />
-    <NavigationProperty Name="tSprint" Relationship="Self.FK__tSprint__idProje__6D2D2E85" FromRole="tProject" ToRole="tSprint" />
-    <NavigationProperty Name="tTeamAllocation" Relationship="Self.FK__tTeamAllo__idPro__77AABCF8" FromRole="tProject" ToRole="tTeamAllocation" />
-  </EntityType>
-  <EntityType Name="tProjectState">
-    <Key>
-      <PropertyRef Name="idState" />
-    </Key>
-    <Property Name="idState" Type="Int32" Nullable="false" />
-    <Property Name="designation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="tProject" Relationship="Self.FK__tProject__idStat__6A50C1DA" FromRole="tProjectState" ToRole="tProject" />
-  </EntityType>
-  <EntityType Name="tSprint">
-    <Key>
-      <PropertyRef Name="idSprint" />
-    </Key>
-    <Property Name="idSprint" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="idProject" Type="Int32" Nullable="false" />
-    <Property Name="slot" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="tPlanning" Relationship="Self.FK__tPlanning__idSpr__0BB1B5A5" FromRole="tSprint" ToRole="tPlanning" />
-    <NavigationProperty Name="tProject" Relationship="Self.FK__tSprint__idProje__6D2D2E85" FromRole="tSprint" ToRole="tProject" />
-    <NavigationProperty Name="tTask" Relationship="Self.tSprintTask" FromRole="tSprint" ToRole="tTask" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="workingSprint" Type="Int32" />
+    <NavigationProperty Name="tPlanning" Relationship="ITDbModel.FK__tPlanning__idPro__53385258" FromRole="tProject" ToRole="tPlanning" />
+    <NavigationProperty Name="tProjectState" Relationship="ITDbModel.FK__tProject__idStat__31D75E8D" FromRole="tProject" ToRole="tProjectState" />
+    <NavigationProperty Name="tSprint" Relationship="ITDbModel.FK__tSprint__idProje__35A7EF71" FromRole="tProject" ToRole="tSprint" />
+    <NavigationProperty Name="tTeamAllocation" Relationship="ITDbModel.FK__tTeamAllo__idPro__4119A21D" FromRole="tProject" ToRole="tTeamAllocation" />
   </EntityType>
   <EntityType Name="tTask">
     <Key>
@@ -57,13 +134,15 @@
     <Property Name="idTask" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="idUser" Type="Int32" Nullable="false" />
     <Property Name="idTaskState" Type="Int32" Nullable="false" />
+    <Property Name="idSprint" Type="Int32" Nullable="false" />
     <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="lastActivity" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="tTaskState" Relationship="Self.FK__tTask__idTaskSta__7D63964E" FromRole="tTask" ToRole="tTaskState" />
-    <NavigationProperty Name="tUser" Relationship="Self.FK__tTask__idUser__7C6F7215" FromRole="tTask" ToRole="tUser" />
-    <NavigationProperty Name="tTrackRecord" Relationship="Self.FK__tTrackRec__idTas__07E124C1" FromRole="tTask" ToRole="tTrackRecord" />
-    <NavigationProperty Name="tSprint" Relationship="Self.tSprintTask" FromRole="tTask" ToRole="tSprint" />
+    <NavigationProperty Name="tSprint" Relationship="ITDbModel.FK__tTask__idSprint__47C69FAC" FromRole="tTask" ToRole="tSprint" />
+    <NavigationProperty Name="tTaskState" Relationship="ITDbModel.FK__tTask__idTaskSta__46D27B73" FromRole="tTask" ToRole="tTaskState" />
+    <NavigationProperty Name="tUser" Relationship="ITDbModel.FK__tTask__idUser__45DE573A" FromRole="tTask" ToRole="tUser" />
+    <NavigationProperty Name="tTrackRecord" Relationship="ITDbModel.FK__tTrackRec__idTas__1F83A428" FromRole="tTask" ToRole="tTrackRecord" />
+    <Property Name="estimatedTime" Type="Int32" />
   </EntityType>
   <EntityType Name="tTaskState">
     <Key>
@@ -71,57 +150,27 @@
     </Key>
     <Property Name="idState" Type="Int32" Nullable="false" />
     <Property Name="designation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="tTask" Relationship="Self.FK__tTask__idTaskSta__7D63964E" FromRole="tTaskState" ToRole="tTask" />
+    <NavigationProperty Name="tTask" Relationship="ITDbModel.FK__tTask__idTaskSta__46D27B73" FromRole="tTaskState" ToRole="tTask" />
   </EntityType>
   <EntityType Name="tTeam">
     <Key>
       <PropertyRef Name="idTeam" />
     </Key>
     <Property Name="idTeam" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="tTeamAllocation" Relationship="Self.FK__tTeamAllo__idTea__76B698BF" FromRole="tTeam" ToRole="tTeamAllocation" />
-  </EntityType>
-  <EntityType Name="tTracker">
-    <Key>
-      <PropertyRef Name="idTracker" />
-    </Key>
-    <Property Name="idTracker" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="idUser" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="tUser" Relationship="Self.FK__tTracker__idUser__041093DD" FromRole="tTracker" ToRole="tUser" />
-    <NavigationProperty Name="tTrackRecord" Relationship="Self.FK__tTrackRec__idTra__06ED0088" FromRole="tTracker" ToRole="tTrackRecord" />
-  </EntityType>
-  <EntityType Name="tTrackRecord">
-    <Key>
-      <PropertyRef Name="idTrackRecord" />
-    </Key>
-    <Property Name="idTrackRecord" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="idTracker" Type="Int32" Nullable="false" />
-    <Property Name="idTask" Type="Int32" Nullable="false" />
-    <Property Name="activityStart" Type="DateTime" Precision="0" />
-    <Property Name="activityEnd" Type="DateTime" Precision="0" />
-    <Property Name="activityTotal" Type="Int32" />
-    <NavigationProperty Name="tTask" Relationship="Self.FK__tTrackRec__idTas__07E124C1" FromRole="tTrackRecord" ToRole="tTask" />
-    <NavigationProperty Name="tTracker" Relationship="Self.FK__tTrackRec__idTra__06ED0088" FromRole="tTrackRecord" ToRole="tTracker" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tTeamAllocation" Relationship="ITDbModel.FK__tTeamAllo__idTea__40257DE4" FromRole="tTeam" ToRole="tTeamAllocation" />
   </EntityType>
   <EntityType Name="tUser">
     <Key>
       <PropertyRef Name="idUser" />
     </Key>
     <Property Name="idUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="username" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="idType" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="tTask" Relationship="Self.FK__tTask__idUser__7C6F7215" FromRole="tUser" ToRole="tTask" />
-    <NavigationProperty Name="tTracker" Relationship="Self.FK__tTracker__idUser__041093DD" FromRole="tUser" ToRole="tTracker" />
-    <NavigationProperty Name="tTeamAllocation" Relationship="Self.FK__tTeamAllo__idUse__75C27486" FromRole="tUser" ToRole="tTeamAllocation" />
-    <NavigationProperty Name="tUserType" Relationship="Self.FK__tUser__idType__71F1E3A2" FromRole="tUser" ToRole="tUserType" />
-  </EntityType>
-  <EntityType Name="tUserType">
-    <Key>
-      <PropertyRef Name="idUserType" />
-    </Key>
-    <Property Name="idUserType" Type="Int32" Nullable="false" />
-    <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="tUser" Relationship="Self.FK__tUser__idType__71F1E3A2" FromRole="tUserType" ToRole="tUser" />
+    <NavigationProperty Name="tTask" Relationship="ITDbModel.FK__tTask__idUser__45DE573A" FromRole="tUser" ToRole="tTask" />
+    <NavigationProperty Name="tTeamAllocation" Relationship="ITDbModel.FK__tTeamAllo__idUse__3F3159AB" FromRole="tUser" ToRole="tTeamAllocation" />
+    <NavigationProperty Name="tUserType" Relationship="ITDbModel.FK__tUser__idType__3B60C8C7" FromRole="tUser" ToRole="tUserType" />
+    <NavigationProperty Name="tTrackRecord" Relationship="ITDbModel.FK__tTrackRec__idUse__1E8F7FEF" FromRole="tUser" ToRole="tTrackRecord" />
   </EntityType>
   <EntityType Name="tTeamAllocation">
     <Key>
@@ -132,13 +181,13 @@
     <Property Name="idUser" Type="Int32" Nullable="false" />
     <Property Name="idTeam" Type="Int32" Nullable="false" />
     <Property Name="idProject" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="tProject" Relationship="Self.FK__tTeamAllo__idPro__77AABCF8" FromRole="tTeamAllocation" ToRole="tProject" />
-    <NavigationProperty Name="tTeam" Relationship="Self.FK__tTeamAllo__idTea__76B698BF" FromRole="tTeamAllocation" ToRole="tTeam" />
-    <NavigationProperty Name="tUser" Relationship="Self.FK__tTeamAllo__idUse__75C27486" FromRole="tTeamAllocation" ToRole="tUser" />
+    <NavigationProperty Name="tProject" Relationship="ITDbModel.FK__tTeamAllo__idPro__4119A21D" FromRole="tTeamAllocation" ToRole="tProject" />
+    <NavigationProperty Name="tTeam" Relationship="ITDbModel.FK__tTeamAllo__idTea__40257DE4" FromRole="tTeamAllocation" ToRole="tTeam" />
+    <NavigationProperty Name="tUser" Relationship="ITDbModel.FK__tTeamAllo__idUse__3F3159AB" FromRole="tTeamAllocation" ToRole="tUser" />
   </EntityType>
-  <Association Name="FK__tPlanning__idPro__0ABD916C">
-    <End Role="tProject" Type="Self.tProject" Multiplicity="1" />
-    <End Role="tPlanning" Type="Self.tPlanning" Multiplicity="*" />
+  <Association Name="FK__tPlanning__idPro__53385258">
+    <End Type="ITDbModel.tProject" Role="tProject" Multiplicity="1" />
+    <End Type="ITDbModel.tPlanning" Role="tPlanning" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tProject">
         <PropertyRef Name="idProject" />
@@ -148,9 +197,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tPlanning__idSpr__0BB1B5A5">
-    <End Role="tSprint" Type="Self.tSprint" Multiplicity="1" />
-    <End Role="tPlanning" Type="Self.tPlanning" Multiplicity="*" />
+  <Association Name="FK__tPlanning__idSpr__542C7691">
+    <End Type="ITDbModel.tSprint" Role="tSprint" Multiplicity="1" />
+    <End Type="ITDbModel.tPlanning" Role="tPlanning" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tSprint">
         <PropertyRef Name="idSprint" />
@@ -160,9 +209,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tProject__idStat__6A50C1DA">
-    <End Role="tProjectState" Type="Self.tProjectState" Multiplicity="1" />
-    <End Role="tProject" Type="Self.tProject" Multiplicity="*" />
+  <Association Name="FK__tProject__idStat__31D75E8D">
+    <End Type="ITDbModel.tProjectState" Role="tProjectState" Multiplicity="1" />
+    <End Type="ITDbModel.tProject" Role="tProject" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tProjectState">
         <PropertyRef Name="idState" />
@@ -172,9 +221,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tSprint__idProje__6D2D2E85">
-    <End Role="tProject" Type="Self.tProject" Multiplicity="1" />
-    <End Role="tSprint" Type="Self.tSprint" Multiplicity="*" />
+  <Association Name="FK__tSprint__idProje__35A7EF71">
+    <End Type="ITDbModel.tProject" Role="tProject" Multiplicity="1" />
+    <End Type="ITDbModel.tSprint" Role="tSprint" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tProject">
         <PropertyRef Name="idProject" />
@@ -184,9 +233,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tTeamAllo__idPro__77AABCF8">
-    <End Role="tProject" Type="Self.tProject" Multiplicity="1" />
-    <End Role="tTeamAllocation" Type="Self.tTeamAllocation" Multiplicity="*" />
+  <Association Name="FK__tTeamAllo__idPro__4119A21D">
+    <End Type="ITDbModel.tProject" Role="tProject" Multiplicity="1" />
+    <End Type="ITDbModel.tTeamAllocation" Role="tTeamAllocation" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tProject">
         <PropertyRef Name="idProject" />
@@ -196,9 +245,21 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tTask__idTaskSta__7D63964E">
-    <End Role="tTaskState" Type="Self.tTaskState" Multiplicity="1" />
-    <End Role="tTask" Type="Self.tTask" Multiplicity="*" />
+  <Association Name="FK__tTask__idSprint__47C69FAC">
+    <End Type="ITDbModel.tSprint" Role="tSprint" Multiplicity="1" />
+    <End Type="ITDbModel.tTask" Role="tTask" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tSprint">
+        <PropertyRef Name="idSprint" />
+      </Principal>
+      <Dependent Role="tTask">
+        <PropertyRef Name="idSprint" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tTask__idTaskSta__46D27B73">
+    <End Type="ITDbModel.tTaskState" Role="tTaskState" Multiplicity="1" />
+    <End Type="ITDbModel.tTask" Role="tTask" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tTaskState">
         <PropertyRef Name="idState" />
@@ -208,9 +269,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tTask__idUser__7C6F7215">
-    <End Role="tUser" Type="Self.tUser" Multiplicity="1" />
-    <End Role="tTask" Type="Self.tTask" Multiplicity="*" />
+  <Association Name="FK__tTask__idUser__45DE573A">
+    <End Type="ITDbModel.tUser" Role="tUser" Multiplicity="1" />
+    <End Type="ITDbModel.tTask" Role="tTask" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tUser">
         <PropertyRef Name="idUser" />
@@ -220,21 +281,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tTrackRec__idTas__07E124C1">
-    <End Role="tTask" Type="Self.tTask" Multiplicity="1" />
-    <End Role="tTrackRecord" Type="Self.tTrackRecord" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tTask">
-        <PropertyRef Name="idTask" />
-      </Principal>
-      <Dependent Role="tTrackRecord">
-        <PropertyRef Name="idTask" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__tTeamAllo__idTea__76B698BF">
-    <End Role="tTeam" Type="Self.tTeam" Multiplicity="1" />
-    <End Role="tTeamAllocation" Type="Self.tTeamAllocation" Multiplicity="*" />
+  <Association Name="FK__tTeamAllo__idTea__40257DE4">
+    <End Type="ITDbModel.tTeam" Role="tTeam" Multiplicity="1" />
+    <End Type="ITDbModel.tTeamAllocation" Role="tTeamAllocation" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tTeam">
         <PropertyRef Name="idTeam" />
@@ -244,33 +293,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tTracker__idUser__041093DD">
-    <End Role="tUser" Type="Self.tUser" Multiplicity="1" />
-    <End Role="tTracker" Type="Self.tTracker" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tUser">
-        <PropertyRef Name="idUser" />
-      </Principal>
-      <Dependent Role="tTracker">
-        <PropertyRef Name="idUser" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__tTrackRec__idTra__06ED0088">
-    <End Role="tTracker" Type="Self.tTracker" Multiplicity="1" />
-    <End Role="tTrackRecord" Type="Self.tTrackRecord" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tTracker">
-        <PropertyRef Name="idTracker" />
-      </Principal>
-      <Dependent Role="tTrackRecord">
-        <PropertyRef Name="idTracker" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__tTeamAllo__idUse__75C27486">
-    <End Role="tUser" Type="Self.tUser" Multiplicity="1" />
-    <End Role="tTeamAllocation" Type="Self.tTeamAllocation" Multiplicity="*" />
+  <Association Name="FK__tTeamAllo__idUse__3F3159AB">
+    <End Type="ITDbModel.tUser" Role="tUser" Multiplicity="1" />
+    <End Type="ITDbModel.tTeamAllocation" Role="tTeamAllocation" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tUser">
         <PropertyRef Name="idUser" />
@@ -280,9 +305,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__tUser__idType__71F1E3A2">
-    <End Role="tUserType" Type="Self.tUserType" Multiplicity="1" />
-    <End Role="tUser" Type="Self.tUser" Multiplicity="*" />
+  <Association Name="FK__tUser__idType__3B60C8C7">
+    <End Type="ITDbModel.tUserType" Role="tUserType" Multiplicity="1" />
+    <End Type="ITDbModel.tUser" Role="tUser" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tUserType">
         <PropertyRef Name="idUserType" />
@@ -292,79 +317,42 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="tSprintTask">
-    <End Role="tSprint" Type="Self.tSprint" Multiplicity="*" />
-    <End Role="tTask" Type="Self.tTask" Multiplicity="*" />
+  <EntityType Name="tTrackRecord">
+    <Key>
+      <PropertyRef Name="idTrackRecord" />
+    </Key>
+    <Property Name="idTrackRecord" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idUser" Type="Int32" Nullable="false" />
+    <Property Name="idTask" Type="Int32" Nullable="false" />
+    <Property Name="activityStart" Type="DateTime" Precision="0" />
+    <Property Name="activityEnd" Type="DateTime" Precision="0" />
+    <Property Name="activityTotal" Type="Int32" />
+    <NavigationProperty Name="tTask" Relationship="ITDbModel.FK__tTrackRec__idTas__1F83A428" FromRole="tTrackRecord" ToRole="tTask" />
+    <NavigationProperty Name="tUser" Relationship="ITDbModel.FK__tTrackRec__idUse__1E8F7FEF" FromRole="tTrackRecord" ToRole="tUser" />
+    <Property Name="isRun" Type="Boolean" />
+  </EntityType>
+  <Association Name="FK__tTrackRec__idTas__1F83A428">
+    <End Type="ITDbModel.tTask" Role="tTask" Multiplicity="1" />
+    <End Type="ITDbModel.tTrackRecord" Role="tTrackRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tTask">
+        <PropertyRef Name="idTask" />
+      </Principal>
+      <Dependent Role="tTrackRecord">
+        <PropertyRef Name="idTask" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="ITDbEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="tEvent" EntityType="Self.tEvent" />
-    <EntitySet Name="tPlanning" EntityType="Self.tPlanning" />
-    <EntitySet Name="tProject" EntityType="Self.tProject" />
-    <EntitySet Name="tProjectState" EntityType="Self.tProjectState" />
-    <EntitySet Name="tSprint" EntityType="Self.tSprint" />
-    <EntitySet Name="tTask" EntityType="Self.tTask" />
-    <EntitySet Name="tTaskState" EntityType="Self.tTaskState" />
-    <EntitySet Name="tTeam" EntityType="Self.tTeam" />
-    <EntitySet Name="tTracker" EntityType="Self.tTracker" />
-    <EntitySet Name="tTrackRecord" EntityType="Self.tTrackRecord" />
-    <EntitySet Name="tUser" EntityType="Self.tUser" />
-    <EntitySet Name="tUserType" EntityType="Self.tUserType" />
-    <EntitySet Name="tTeamAllocation" EntityType="Self.tTeamAllocation" />
-    <AssociationSet Name="FK__tPlanning__idPro__0ABD916C" Association="Self.FK__tPlanning__idPro__0ABD916C">
-      <End Role="tProject" EntitySet="tProject" />
-      <End Role="tPlanning" EntitySet="tPlanning" />
-    </AssociationSet>
-    <AssociationSet Name="FK__tPlanning__idSpr__0BB1B5A5" Association="Self.FK__tPlanning__idSpr__0BB1B5A5">
-      <End Role="tSprint" EntitySet="tSprint" />
-      <End Role="tPlanning" EntitySet="tPlanning" />
-    </AssociationSet>
-    <AssociationSet Name="FK__tProject__idStat__6A50C1DA" Association="Self.FK__tProject__idStat__6A50C1DA">
-      <End Role="tProjectState" EntitySet="tProjectState" />
-      <End Role="tProject" EntitySet="tProject" />
-    </AssociationSet>
-    <AssociationSet Name="FK__tSprint__idProje__6D2D2E85" Association="Self.FK__tSprint__idProje__6D2D2E85">
-      <End Role="tProject" EntitySet="tProject" />
-      <End Role="tSprint" EntitySet="tSprint" />
-    </AssociationSet>
-    <AssociationSet Name="FK__tTeamAllo__idPro__77AABCF8" Association="Self.FK__tTeamAllo__idPro__77AABCF8">
-      <End Role="tProject" EntitySet="tProject" />
-      <End Role="tTeamAllocation" EntitySet="tTeamAllocation" />
-    </AssociationSet>
-    <AssociationSet Name="FK__tTask__idTaskSta__7D63964E" Association="Self.FK__tTask__idTaskSta__7D63964E">
-      <End Role="tTaskState" EntitySet="tTaskState" />
-      <End Role="tTask" EntitySet="tTask" />
-    </AssociationSet>
-    <AssociationSet Name="FK__tTask__idUser__7C6F7215" Association="Self.FK__tTask__idUser__7C6F7215">
-      <End Role="tUser" EntitySet="tUser" />
-      <End Role="tTask" EntitySet="tTask" />
-    </AssociationSet>
-    <AssociationSet Name="FK__tTrackRec__idTas__07E124C1" Association="Self.FK__tTrackRec__idTas__07E124C1">
-      <End Role="tTask" EntitySet="tTask" />
-      <End Role="tTrackRecord" EntitySet="tTrackRecord" />
-    </AssociationSet>
-    <AssociationSet Name="FK__tTeamAllo__idTea__76B698BF" Association="Self.FK__tTeamAllo__idTea__76B698BF">
-      <End Role="tTeam" EntitySet="tTeam" />
-      <End Role="tTeamAllocation" EntitySet="tTeamAllocation" />
-    </AssociationSet>
-    <AssociationSet Name="FK__tTracker__idUser__041093DD" Association="Self.FK__tTracker__idUser__041093DD">
-      <End Role="tUser" EntitySet="tUser" />
-      <End Role="tTracker" EntitySet="tTracker" />
-    </AssociationSet>
-    <AssociationSet Name="FK__tTrackRec__idTra__06ED0088" Association="Self.FK__tTrackRec__idTra__06ED0088">
-      <End Role="tTracker" EntitySet="tTracker" />
-      <End Role="tTrackRecord" EntitySet="tTrackRecord" />
-    </AssociationSet>
-    <AssociationSet Name="FK__tTeamAllo__idUse__75C27486" Association="Self.FK__tTeamAllo__idUse__75C27486">
-      <End Role="tUser" EntitySet="tUser" />
-      <End Role="tTeamAllocation" EntitySet="tTeamAllocation" />
-    </AssociationSet>
-    <AssociationSet Name="FK__tUser__idType__71F1E3A2" Association="Self.FK__tUser__idType__71F1E3A2">
-      <End Role="tUserType" EntitySet="tUserType" />
-      <End Role="tUser" EntitySet="tUser" />
-    </AssociationSet>
-    <AssociationSet Name="tSprintTask" Association="Self.tSprintTask">
-      <End Role="tSprint" EntitySet="tSprint" />
-      <End Role="tTask" EntitySet="tTask" />
-    </AssociationSet>
-  </EntityContainer>
+  <Association Name="FK__tTrackRec__idUse__1E8F7FEF">
+    <End Type="ITDbModel.tUser" Role="tUser" Multiplicity="1" />
+    <End Type="ITDbModel.tTrackRecord" Role="tTrackRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tUser">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="tTrackRecord">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

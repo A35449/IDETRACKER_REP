@@ -1,0 +1,63 @@
+
+<div class="header clearfix">
+  <strong>Tracker</strong>
+</div>
+<!--<div class="header clearfix">
+    <div class="col-md-8"> 
+        <input type="text" class="form-control witd-danger-addon" placeholder="Insert nº task">
+    </div>
+    <div class="col-md-4">
+        <span class="input-group-btn">
+          <button class="btn btn-danger" type="button">Track!</button>
+        </span>
+    </div>
+</div>-->
+<p>&nbsp;</p>
+<div class="msg-list">
+  <div *ngFor="let rT of runningTracks" class="center">
+    <div class="col-md-5">
+      <span style="font-weight: bold;">Current Task: </span> nº {{rT.idTask}}
+    </div>
+    <div class="col-md-4">
+      <span style="font-weight: bold;"> Time: </span> {{runningTimer}}
+    </div>
+    <div class="col-md-1" *ngIf="!isRunning">
+      <i class="socicon" style="color:blue;">L</i>
+    </div>
+    <div class="col-md-1" *ngIf="isRunning">
+      <i ng-reflect-class-name="fa fa-stop-circle-o" class="fa fa-stop-circle-o" style="color:red;"></i>
+    </div>
+    <div class="col-md-1">
+       <i ng-reflect-class-name="ion-checkmark-circled" class="ion-checkmark-circled" style="color:green;"></i>
+    </div>
+  </div>
+<p>&nbsp;</p>
+  <table class="col-md-12 table table-responsive baTracker-table">
+    <tr class="center">
+      <th>
+        Task
+      </th>
+      <th>
+        Start
+      </th>
+      <th>
+        End
+      </th>
+      <th>
+        Total
+      </th>
+    </tr>
+    <tr *ngFor="let rec of tracks" class="center">
+      <td>{{rec.idTask}}</td>
+      <td>{{rec.activityStart.substring(0,10)}}</td>
+      <td>{{rec.activityEnd.substring(0,10)}}</td>
+      <td>{{convertMS(rec.activityTotal)}}</td>
+    </tr>
+  </table>
+</div>
+<p>&nbsp;</p>
+<div class="col-md-12">
+  <p> Total Summary: {{_total}} hours </p>
+</div>
+
+

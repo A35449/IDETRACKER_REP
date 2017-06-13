@@ -1,3 +1,4 @@
+import { OverviewTask } from './components/overview-task/overview.task.component';
 import {Component} from '@angular/core';
 
 @Component({
@@ -6,5 +7,9 @@ import {Component} from '@angular/core';
 })
 
 export class Overview {
+  selectedSp : number = 1;
 
+  constructor(){
+
+  }
 }

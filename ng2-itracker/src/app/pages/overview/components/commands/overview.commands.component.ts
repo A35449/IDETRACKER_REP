@@ -1,3 +1,4 @@
+import { TrackerService } from './../../../../model/track/track.service';
 import {Component} from '@angular/core';
 
 @Component({
@@ -6,5 +7,11 @@ import {Component} from '@angular/core';
 })
 
 export class Commands{
+  constructor(private trackService : TrackerService){
 
+  }
+
+  public stopTimer(){
+    this.trackService.stopTimer();
+  }
 }

@@ -1,33 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="ITDbModelStoreContainer" CdmEntityContainer="ITDbEntities">
-    <EntitySetMapping Name="tEvent">
-      <EntityTypeMapping TypeName="ITDbModel.tEvent">
-        <MappingFragment StoreEntitySet="tEvent">
-          <ScalarProperty Name="idEvent" ColumnName="idEvent" />
-          <ScalarProperty Name="description" ColumnName="description" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tPlanning">
-      <EntityTypeMapping TypeName="ITDbModel.tPlanning">
-        <MappingFragment StoreEntitySet="tPlanning">
-          <ScalarProperty Name="idProject" ColumnName="idProject" />
-          <ScalarProperty Name="idSprint" ColumnName="idSprint" />
-          <ScalarProperty Name="sprintStart" ColumnName="sprintStart" />
-          <ScalarProperty Name="sprintEnd" ColumnName="sprintEnd" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tProject">
-      <EntityTypeMapping TypeName="ITDbModel.tProject">
-        <MappingFragment StoreEntitySet="tProject">
-          <ScalarProperty Name="idProject" ColumnName="idProject" />
-          <ScalarProperty Name="idState" ColumnName="idState" />
-          <ScalarProperty Name="name" ColumnName="name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tProjectState">
       <EntityTypeMapping TypeName="ITDbModel.tProjectState">
         <MappingFragment StoreEntitySet="tProjectState">
@@ -39,66 +12,11 @@
     <EntitySetMapping Name="tSprint">
       <EntityTypeMapping TypeName="ITDbModel.tSprint">
         <MappingFragment StoreEntitySet="tSprint">
+          <ScalarProperty Name="startDate" ColumnName="startDate" />
+          <ScalarProperty Name="duration" ColumnName="duration" />
           <ScalarProperty Name="idSprint" ColumnName="idSprint" />
           <ScalarProperty Name="idProject" ColumnName="idProject" />
           <ScalarProperty Name="slot" ColumnName="slot" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tTask">
-      <EntityTypeMapping TypeName="ITDbModel.tTask">
-        <MappingFragment StoreEntitySet="tTask">
-          <ScalarProperty Name="idTask" ColumnName="idTask" />
-          <ScalarProperty Name="idUser" ColumnName="idUser" />
-          <ScalarProperty Name="idTaskState" ColumnName="idTaskState" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="description" ColumnName="description" />
-          <ScalarProperty Name="lastActivity" ColumnName="lastActivity" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tTaskState">
-      <EntityTypeMapping TypeName="ITDbModel.tTaskState">
-        <MappingFragment StoreEntitySet="tTaskState">
-          <ScalarProperty Name="idState" ColumnName="idState" />
-          <ScalarProperty Name="designation" ColumnName="designation" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tTeam">
-      <EntityTypeMapping TypeName="ITDbModel.tTeam">
-        <MappingFragment StoreEntitySet="tTeam">
-          <ScalarProperty Name="idTeam" ColumnName="idTeam" />
-          <ScalarProperty Name="name" ColumnName="name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tTracker">
-      <EntityTypeMapping TypeName="ITDbModel.tTracker">
-        <MappingFragment StoreEntitySet="tTracker">
-          <ScalarProperty Name="idTracker" ColumnName="idTracker" />
-          <ScalarProperty Name="idUser" ColumnName="idUser" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tTrackRecord">
-      <EntityTypeMapping TypeName="ITDbModel.tTrackRecord">
-        <MappingFragment StoreEntitySet="tTrackRecord">
-          <ScalarProperty Name="idTrackRecord" ColumnName="idTrackRecord" />
-          <ScalarProperty Name="idTracker" ColumnName="idTracker" />
-          <ScalarProperty Name="idTask" ColumnName="idTask" />
-          <ScalarProperty Name="activityStart" ColumnName="activityStart" />
-          <ScalarProperty Name="activityEnd" ColumnName="activityEnd" />
-          <ScalarProperty Name="activityTotal" ColumnName="activityTotal" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tUser">
-      <EntityTypeMapping TypeName="ITDbModel.tUser">
-        <MappingFragment StoreEntitySet="tUser">
-          <ScalarProperty Name="idUser" ColumnName="idUser" />
-          <ScalarProperty Name="username" ColumnName="username" />
-          <ScalarProperty Name="idType" ColumnName="idType" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -110,22 +28,94 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tTeamAllocation">
-      <EntityTypeMapping TypeName="ITDbModel.tTeamAllocation">
-        <MappingFragment StoreEntitySet="tTeamAllocation">
-          <ScalarProperty Name="idUser" ColumnName="idUser" />
-          <ScalarProperty Name="idTeam" ColumnName="idTeam" />
+    <EntitySetMapping Name="tEvent">
+      <EntityTypeMapping TypeName="ITDbModel.tEvent">
+        <MappingFragment StoreEntitySet="tEvent">
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="idEvent" ColumnName="idEvent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tPlanning">
+      <EntityTypeMapping TypeName="ITDbModel.tPlanning">
+        <MappingFragment StoreEntitySet="tPlanning">
+          <ScalarProperty Name="sprintEnd" ColumnName="sprintEnd" />
+          <ScalarProperty Name="sprintStart" ColumnName="sprintStart" />
+          <ScalarProperty Name="idSprint" ColumnName="idSprint" />
           <ScalarProperty Name="idProject" ColumnName="idProject" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="tSprintTask" TypeName="ITDbModel.tSprintTask" StoreEntitySet="tSprintTask">
-      <EndProperty Name="tSprint">
-        <ScalarProperty Name="idSprint" ColumnName="idSprint" />
-      </EndProperty>
-      <EndProperty Name="tTask">
-        <ScalarProperty Name="idTask" ColumnName="idTask" />
-      </EndProperty>
-    </AssociationSetMapping>
+    <EntitySetMapping Name="tProject">
+      <EntityTypeMapping TypeName="ITDbModel.tProject">
+        <MappingFragment StoreEntitySet="tProject">
+          <ScalarProperty Name="workingSprint" ColumnName="workingSprint" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="idState" ColumnName="idState" />
+          <ScalarProperty Name="idProject" ColumnName="idProject" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tTask">
+      <EntityTypeMapping TypeName="ITDbModel.tTask">
+        <MappingFragment StoreEntitySet="tTask">
+          <ScalarProperty Name="estimatedTime" ColumnName="estimatedTime" />
+          <ScalarProperty Name="lastActivity" ColumnName="lastActivity" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="idSprint" ColumnName="idSprint" />
+          <ScalarProperty Name="idTaskState" ColumnName="idTaskState" />
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="idTask" ColumnName="idTask" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tTaskState">
+      <EntityTypeMapping TypeName="ITDbModel.tTaskState">
+        <MappingFragment StoreEntitySet="tTaskState">
+          <ScalarProperty Name="designation" ColumnName="designation" />
+          <ScalarProperty Name="idState" ColumnName="idState" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tTeam">
+      <EntityTypeMapping TypeName="ITDbModel.tTeam">
+        <MappingFragment StoreEntitySet="tTeam">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="idTeam" ColumnName="idTeam" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tUser">
+      <EntityTypeMapping TypeName="ITDbModel.tUser">
+        <MappingFragment StoreEntitySet="tUser">
+          <ScalarProperty Name="idType" ColumnName="idType" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tTeamAllocation">
+      <EntityTypeMapping TypeName="ITDbModel.tTeamAllocation">
+        <MappingFragment StoreEntitySet="tTeamAllocation">
+          <ScalarProperty Name="idProject" ColumnName="idProject" />
+          <ScalarProperty Name="idTeam" ColumnName="idTeam" />
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tTrackRecord">
+      <EntityTypeMapping TypeName="ITDbModel.tTrackRecord">
+        <MappingFragment StoreEntitySet="tTrackRecord">
+          <ScalarProperty Name="isRun" ColumnName="isRun" />
+          <ScalarProperty Name="activityTotal" ColumnName="activityTotal" />
+          <ScalarProperty Name="activityEnd" ColumnName="activityEnd" />
+          <ScalarProperty Name="activityStart" ColumnName="activityStart" />
+          <ScalarProperty Name="idTask" ColumnName="idTask" />
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="idTrackRecord" ColumnName="idTrackRecord" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

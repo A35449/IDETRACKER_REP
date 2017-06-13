@@ -1,3 +1,5 @@
+import { Commands } from './../pages/overview/components/commands/overview.commands.component';
+
 import { NgModule, ModuleWithProviders }      from '@angular/core';
 import { CommonModule }  from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -29,6 +31,10 @@ import {
   BaSidebar
 } from './components';
 
+/*CUSTOM*/
+import { BaTracker } from './components/baTracker/baTracker.component';
+import { BaEvents } from "./components/baEvents/baEvents.component";
+
 import { BaCardBlur } from './components/baCard/baCardBlur.directive';
 
 import {
@@ -55,6 +61,7 @@ import {
   EqualPasswordsValidator
 } from './validators';
 
+
 const NGA_COMPONENTS = [
   BaAmChart,
   BaBackTop,
@@ -69,7 +76,10 @@ const NGA_COMPONENTS = [
   BaMultiCheckbox,
   BaPageTop,
   BaPictureUploader,
-  BaSidebar
+  BaSidebar,
+  BaTracker,
+  BaEvents,
+  Commands
 ];
 
 const NGA_DIRECTIVES = [

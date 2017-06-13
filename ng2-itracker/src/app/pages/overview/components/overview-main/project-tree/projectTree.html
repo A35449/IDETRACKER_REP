@@ -1,4 +1,7 @@
+<div *ngFor="let proj of promiseList | async">
+  <a (click)="selectProjectEvent(proj.idProject)">+ {{proj.name}}</a>
+  <sprinttree-view [iSlot]="proj.idProject"></sprinttree-view>
+</div>
 
-  <tree id="projectree-view" [tree]="treePjs"></tree>
 
 

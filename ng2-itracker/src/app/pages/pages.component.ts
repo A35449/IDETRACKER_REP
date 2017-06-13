@@ -1,8 +1,11 @@
+
 import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
 
 import { BaMenuService } from '../theme';
 import { PAGES_MENU } from './pages.menu';
+
+
   //  <ba-sidebar></ba-sidebar>
 @Component({
   selector: 'pages',

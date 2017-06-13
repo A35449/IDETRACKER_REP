@@ -24,6 +24,8 @@ namespace DAL
         public int idSprint { get; set; }
         public int idProject { get; set; }
         public int slot { get; set; }
+        public Nullable<int> duration { get; set; }
+        public System.DateTime startDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tPlanning> tPlanning { get; set; }

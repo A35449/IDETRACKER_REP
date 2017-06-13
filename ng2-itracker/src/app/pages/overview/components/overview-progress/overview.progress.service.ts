@@ -1,4 +1,8 @@
-import {Injectable} from '@angular/core';
+import { BreakdownModel } from './../../../../model/breakdown/breakdown.model';
+import { SprintService } from './../../../../model/sprint/sprint.service';
+import { TaskModel } from './../../../../model/task/task.model';
+import { TaskService } from './../../../../model/task/task.service';
+import {Injectable, OnInit} from '@angular/core';
 
 import {BaThemeConfigProvider} from '../../../../theme';
 
@@ -7,44 +11,9 @@ import 'style-loader!./overview.progress.scss';
 @Injectable()
 export class ProgressService {
 
-  private _data = {
-    simpleLineOptions: {
-      color: this._baConfig.get().colors.defaultText,
-      fullWidth: true,
-      height: '300px',
-      chartPadding: {
-        right: 40
-      }
-    },
-    simpleLineData: {
-      labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
-      series: [
-        [5, 4, 3, 1, 0],
-        [5, 5, 4]
-      ]
-    },
-
-    biLineOptions: {
-      height: '300px',
-      high: 3,
-      low: -3,
-      showArea: true,
-      showLine: false,
-      showPoint: false,
-      fullWidth: true,
-      axisX: {
-        showGrid: false
-      }
-    }
-  };
-
-  constructor(private _baConfig:BaThemeConfigProvider) {
+  constructor(private _baConfig:BaThemeConfigProvider, private _serviceSprint:SprintService) {
   }
-
-  public getAll() {
-    return this._data;
-  }
-
+  
    public getResponsive(padding, offset) {
     return [
       ['screen and (min-width: 1550px)', {
@@ -72,4 +41,6 @@ export class ProgressService {
       }]
     ];
   }
+
+   public initializeData(data:TaskModel[]){}
 }

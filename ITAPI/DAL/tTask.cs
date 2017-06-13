@@ -18,21 +18,21 @@ namespace DAL
         public tTask()
         {
             this.tTrackRecord = new HashSet<tTrackRecord>();
-            this.tSprint = new HashSet<tSprint>();
         }
     
         public int idTask { get; set; }
         public int idUser { get; set; }
         public int idTaskState { get; set; }
+        public int idSprint { get; set; }
         public string name { get; set; }
         public string description { get; set; }
         public Nullable<System.DateTime> lastActivity { get; set; }
+        public Nullable<int> estimatedTime { get; set; }
     
+        public virtual tSprint tSprint { get; set; }
         public virtual tTaskState tTaskState { get; set; }
         public virtual tUser tUser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tTrackRecord> tTrackRecord { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tSprint> tSprint { get; set; }
     }
 }

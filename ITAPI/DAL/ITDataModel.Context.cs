@@ -25,18 +25,17 @@ namespace DAL
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<tProjectState> tProjectState { get; set; }
+        public virtual DbSet<tSprint> tSprint { get; set; }
+        public virtual DbSet<tUserType> tUserType { get; set; }
         public virtual DbSet<tEvent> tEvent { get; set; }
         public virtual DbSet<tPlanning> tPlanning { get; set; }
         public virtual DbSet<tProject> tProject { get; set; }
-        public virtual DbSet<tProjectState> tProjectState { get; set; }
-        public virtual DbSet<tSprint> tSprint { get; set; }
         public virtual DbSet<tTask> tTask { get; set; }
         public virtual DbSet<tTaskState> tTaskState { get; set; }
         public virtual DbSet<tTeam> tTeam { get; set; }
-        public virtual DbSet<tTracker> tTracker { get; set; }
-        public virtual DbSet<tTrackRecord> tTrackRecord { get; set; }
         public virtual DbSet<tUser> tUser { get; set; }
-        public virtual DbSet<tUserType> tUserType { get; set; }
         public virtual DbSet<tTeamAllocation> tTeamAllocation { get; set; }
+        public virtual DbSet<tTrackRecord> tTrackRecord { get; set; }
     }
 }

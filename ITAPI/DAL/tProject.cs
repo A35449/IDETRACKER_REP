@@ -25,6 +25,7 @@ namespace DAL
         public int idProject { get; set; }
         public int idState { get; set; }
         public string name { get; set; }
+        public Nullable<int> workingSprint { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tPlanning> tPlanning { get; set; }

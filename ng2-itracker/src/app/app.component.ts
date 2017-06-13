@@ -1,3 +1,7 @@
+import { Subscription } from 'rxjs/Rx';
+
+
+
 import { Component, ViewContainerRef } from '@angular/core';
 
 import { GlobalState } from './global.state';
@@ -7,6 +11,14 @@ import { layoutPaths } from './theme/theme.constants';
 
 import 'style-loader!./app.scss';
 import 'style-loader!./theme/initial.scss';
+
+import {ProjectService} from './model/project/project.service';
+import {UserService} from './model/user/user.service';
+import {SprintService} from './model/sprint/sprint.service';
+import { TaskService } from './model/task/task.service';
+import { EventService } from './model/event/event.service';
+import { TrackerService } from './model/track/track.service';
+import { TimerObservable } from "rxjs/observable/TimerObservable";
 
 /*
  * App Component
@@ -19,10 +31,12 @@ import 'style-loader!./theme/initial.scss';
       <div class="additional-bg"></div>
       <router-outlet></router-outlet>
     </main>
-  `
+  `,
+  providers : [ProjectService, UserService, SprintService, TaskService,EventService,TrackerService]
 })
 
 export class App {
+
 
   isMenuCollapsed: boolean = false;
 
@@ -30,7 +44,8 @@ export class App {
               private _imageLoader: BaImageLoaderService,
               private _spinner: BaThemeSpinner,
               private viewContainerRef: ViewContainerRef,
-              private themeConfig: BaThemeConfig) {
+              private themeConfig: BaThemeConfig,
+              private _trackerService : TrackerService) {
 
     themeConfig.config();
 
@@ -52,5 +67,4 @@ export class App {
     // register some loaders
     BaThemePreloader.registerLoader(this._imageLoader.load(layoutPaths.images.root + 'sky-bg.jpg'));
   }
-
 }

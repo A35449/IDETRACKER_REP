@@ -31,7 +31,19 @@ namespace ITAPI.Controllers
             using (ITDbEntities entities = new ITDbEntities())
             {
                 return Project.Deserialize(entities.tProject.Where(x => x.idProject == id).FirstOrDefault());
+                
             }
         }
+
+        //[HttpGet("slots/{id}")]
+        //public IEnumerable<ProjectSlots> GetSlots(int id)
+        //{
+        //    using (ITDbEntities entities = new ITDbEntities())
+        //    {
+        //        return ProjectSlots.Deserialize(entities.tSprint.Include("tProject").Where(x => x.idProject == id).GroupBy(x => x.idProject).ToList());
+
+        //    }
+        //}
+
     }
 }

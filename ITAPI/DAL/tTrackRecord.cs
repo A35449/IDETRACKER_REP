@@ -15,13 +15,14 @@ namespace DAL
     public partial class tTrackRecord
     {
         public int idTrackRecord { get; set; }
-        public int idTracker { get; set; }
+        public int idUser { get; set; }
         public int idTask { get; set; }
         public Nullable<System.DateTime> activityStart { get; set; }
         public Nullable<System.DateTime> activityEnd { get; set; }
         public Nullable<int> activityTotal { get; set; }
+        public Nullable<bool> isRun { get; set; }
     
         public virtual tTask tTask { get; set; }
-        public virtual tTracker tTracker { get; set; }
+        public virtual tUser tUser { get; set; }
     }
 }

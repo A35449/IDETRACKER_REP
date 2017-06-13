@@ -18,8 +18,8 @@ namespace DAL
         public tUser()
         {
             this.tTask = new HashSet<tTask>();
-            this.tTracker = new HashSet<tTracker>();
             this.tTeamAllocation = new HashSet<tTeamAllocation>();
+            this.tTrackRecord = new HashSet<tTrackRecord>();
         }
     
         public int idUser { get; set; }
@@ -29,9 +29,9 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tTask> tTask { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tTracker> tTracker { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tTeamAllocation> tTeamAllocation { get; set; }
         public virtual tUserType tUserType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tTrackRecord> tTrackRecord { get; set; }
     }
 }

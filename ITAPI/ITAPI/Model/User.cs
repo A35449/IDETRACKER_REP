@@ -11,6 +11,7 @@ namespace ITAPI.Model
         public int idUser { get; set; }
         public string username { get; set; }
         public string password { get; set; }
+        public string email { get; set; }
 
         public static _User Deserialize(tUser t)
         {
@@ -18,6 +19,7 @@ namespace ITAPI.Model
             obj.idUser = t.idUser;
             obj.username = t.username;
             obj.password = "bios";
+            obj.email = "email";
 
             return obj;
         }

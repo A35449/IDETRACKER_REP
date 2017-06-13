@@ -30,6 +30,7 @@
     <NavigationProperty Name="tProjectState" Relationship="Self.FK__tProject__idStat__6A50C1DA" FromRole="tProject" ToRole="tProjectState" />
     <NavigationProperty Name="tSprint" Relationship="Self.FK__tSprint__idProje__6D2D2E85" FromRole="tProject" ToRole="tSprint" />
     <NavigationProperty Name="tTeamAllocation" Relationship="Self.FK__tTeamAllo__idPro__77AABCF8" FromRole="tProject" ToRole="tTeamAllocation" />
+    <Property Name="slots" Type="Int32" />
   </EntityType>
   <EntityType Name="tProjectState">
     <Key>
@@ -114,6 +115,8 @@
     <NavigationProperty Name="tTracker" Relationship="Self.FK__tTracker__idUser__041093DD" FromRole="tUser" ToRole="tTracker" />
     <NavigationProperty Name="tTeamAllocation" Relationship="Self.FK__tTeamAllo__idUse__75C27486" FromRole="tUser" ToRole="tTeamAllocation" />
     <NavigationProperty Name="tUserType" Relationship="Self.FK__tUser__idType__71F1E3A2" FromRole="tUser" ToRole="tUserType" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="tUserType">
     <Key>

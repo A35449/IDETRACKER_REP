@@ -1,0 +1,70 @@
+<ba-card title="Main">
+    <table class="table center">
+        <tr>
+            <th>#</th>
+            <th>Id</th>
+            <th>Designation</th>
+            <th>Last modified</th>
+            <th></th>
+        </tr>
+        <tr class="info">
+            <td>Processing</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr *ngFor="let task of processingTasks">
+            <td><i class="ion-navicon-round"></i></td>
+            <td>{{task.idTask}}</td>
+            <td>{{task.name}}</td>
+            <td>{{task.lastActivity}}</td>
+            <td class="align-right"><ui-command></ui-command></td>
+        </tr>
+        <tr class="warning">
+            <td>Upcomming</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr *ngFor="let task of upcommingTasks" >
+            <td><i class="ion-navicon-round"></i></td>
+            <td>{{task.idTask}}</td>
+            <td>{{task.name}}</td>
+            <td>{{task.lastActivity}}</td>
+            <td class="align-right"><ui-command></ui-command></td>
+        </tr>
+        <template *ngIf="true">
+            <tr class="success">
+                <td>Completed</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr *ngFor="let task of completedTasks">
+                <td><i class="ion-navicon-round"></i></td>
+                <td>{{task.idTask}}</td>
+                <td>{{task.name}}</td>
+                <td>{{task.lastActivity}}</td>
+                <td class="align-right"><ui-command></ui-command></td>
+            </tr>
+        </template>
+            <tr class="danger">
+                <td>Suspended</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr *ngFor="let task of suspendedTasks" (click)="TaskOnClick(task.idTask)">
+                <td><i class="ion-navicon-round"></i></td>
+                <td>{{task.idTask}}</td>
+                <td>{{task.name}}</td>
+                <td>{{task.lastActivity}}</td>
+                <td class="align-right"><ui-command></ui-command></td>
+            </tr>
+    </table>
+</ba-card>
+

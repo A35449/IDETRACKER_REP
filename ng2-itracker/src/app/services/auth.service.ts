@@ -26,10 +26,13 @@ export class AuthenticationService {
       return true;
     }
     return false;
- 
   }
- 
-   checkCredentials(){
+   
+  getLoggedUser(){
+    return this.users;
+  }
+
+  checkCredentials(){
     if (localStorage.getItem("user") === null){
         this._router.navigate(['Login']);
     }

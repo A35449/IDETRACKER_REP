@@ -33,12 +33,20 @@ namespace ITAPI.Controllers
             }
         }
 
-        [HttpGet("username/{username}")]
-        public _User Get(string username)
+        [HttpGet("project/{id}")]
+        public List<_User> GetFromProject(int id)
         {
             using (ITDbEntities entities = new ITDbEntities())
             {
-                return _User.Deserialize(entities.tUser.Where(x => x.username == username).FirstOrDefault());
+                var list = new List<_User>();
+           
+                var allocs = entities.tTeamAllocation.Include("tUser").Where(x => x.idProject == id).ToList();
+                foreach (var loc in allocs)
+                {
+                    list.Add(_User.Deserialize(loc.tUser));
+                }
+
+                return list;
             }
         }
     }

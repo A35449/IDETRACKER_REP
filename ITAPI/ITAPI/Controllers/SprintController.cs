@@ -35,5 +35,24 @@ namespace ITAPI.Controllers
             }
         }
 
+        [HttpGet("idProject/{id}")]
+        public IEnumerable<Sprint> GetFromProject(int id)
+        {
+            using (ITDbEntities entities = new ITDbEntities())
+            {
+                return Sprint.Deserialize(entities.tSprint.Where(x => x.idProject == id).ToList());
+            }
+        }
+        [HttpGet("{id}/user/{idUser}/breakdown")]
+        public Breakdown GetSprintBreakdown(int id , int idUser)
+        {
+            var sprint = Get(id);
+
+            using (ITDbEntities entities = new ITDbEntities())
+            {
+                var tasks = entities.tTask.Where(x => x.idSprint == id && x.idUser == idUser).OrderBy(x => x.lastActivity).ToList();
+                return new Breakdown().set(tasks,sprint.startDate,sprint.duration);
+            }
+        }
     }
 }

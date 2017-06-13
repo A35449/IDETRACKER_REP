@@ -8,3 +8,13 @@ C:\Users\workstation\Desktop\ISEL\PS\Workspace\ITAPI\DAL\bin\Release\EntityFrame
 C:\Users\workstation\Desktop\ISEL\PS\Workspace\ITAPI\DAL\obj\Release\DAL.csprojResolveAssemblyReference.cache
 C:\Users\workstation\Desktop\ISEL\PS\Workspace\ITAPI\DAL\obj\Release\DAL.dll
 C:\Users\workstation\Desktop\ISEL\PS\Workspace\ITAPI\DAL\obj\Release\DAL.pdb
+C:\Users\workstation\Desktop\ISEL\PS\Workspace - Cópia\ITAPI\DAL\bin\Release\DAL.dll.config
+C:\Users\workstation\Desktop\ISEL\PS\Workspace - Cópia\ITAPI\DAL\bin\Release\DAL.dll
+C:\Users\workstation\Desktop\ISEL\PS\Workspace - Cópia\ITAPI\DAL\bin\Release\DAL.pdb
+C:\Users\workstation\Desktop\ISEL\PS\Workspace - Cópia\ITAPI\DAL\bin\Release\EntityFramework.dll
+C:\Users\workstation\Desktop\ISEL\PS\Workspace - Cópia\ITAPI\DAL\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\workstation\Desktop\ISEL\PS\Workspace - Cópia\ITAPI\DAL\bin\Release\EntityFramework.xml
+C:\Users\workstation\Desktop\ISEL\PS\Workspace - Cópia\ITAPI\DAL\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\workstation\Desktop\ISEL\PS\Workspace - Cópia\ITAPI\DAL\obj\Release\DAL.csprojResolveAssemblyReference.cache
+C:\Users\workstation\Desktop\ISEL\PS\Workspace - Cópia\ITAPI\DAL\obj\Release\DAL.dll
+C:\Users\workstation\Desktop\ISEL\PS\Workspace - Cópia\ITAPI\DAL\obj\Release\DAL.pdb
